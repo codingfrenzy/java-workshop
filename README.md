@@ -1,2 +1,2 @@
-# leetcode
-Interview & general programming questions
+# Practice 
+General programming questions, algorithm implementations, data structure problems
