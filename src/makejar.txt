@@ -1,0 +1,2 @@
+touch manifest.txt
+jar cvfm Process.jar manifest.txt Process.class
