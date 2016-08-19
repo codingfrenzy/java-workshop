@@ -18,9 +18,28 @@ For example, if there are 4 stones in the heap, then you will never win the game
 public class NimGame extends ASolution {
     @Override
     void runSolution() {
-        println(canWinNim(5));
+        println("Win? " + (canWinNim(4, 1) ? "yes" : "no"));
     }
-    public boolean canWinNim(int n) {
+
+    int[] choices = {1, 2, 3};
+
+    public boolean canWinNim(int n, int whoseChance) {
+        if (n <= 3 && whoseChance % 2 == 1) {
+            return true;
+        } else if (n <= 3) {
+            return false;
+        }
+        ++whoseChance;
+        for (int choice : choices) {
+            if (n <= 3 && whoseChance % 2 == 1) {
+                return true;
+            } else if (n <= 3) {
+                return false;
+            }
+            if (canWinNim(n - choice, whoseChance)) {
+                return true;
+            }
+        }
         return false;
     }
 }
