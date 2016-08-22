@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 /**
  * Created by prasanthnair on 8/17/16.
  */
@@ -18,28 +20,48 @@ For example, if there are 4 stones in the heap, then you will never win the game
 public class NimGame extends ASolution {
     @Override
     void runSolution() {
-        println("Win? " + (canWinNim(4, 1) ? "yes" : "no"));
+        println("Win? " + (canWinNim(8) ? "yes" : "no"));
     }
 
     int[] choices = {1, 2, 3};
+    Stack<Game> st = new Stack<>();
 
-    public boolean canWinNim(int n, int whoseChance) {
-        if (n <= 3 && whoseChance % 2 == 1) {
-            return true;
-        } else if (n <= 3) {
-            return false;
+    class Game {
+        int n;
+        int turn;
+
+        Game(int n, int turn) {
+            this.n = n;
+            this.turn = turn;
         }
-        ++whoseChance;
-        for (int choice : choices) {
-            if (n <= 3 && whoseChance % 2 == 1) {
-                return true;
-            } else if (n <= 3) {
+    }
+
+    private boolean canWinNim(int n) {
+        return n%4>0;
+    }
+    private boolean canWinNim1(int n) {
+
+        if (n <= 3)
+            return true;
+
+        boolean canHeWin = false;
+        boolean canIWin = false;
+        st.push(new Game(n, 1));
+        while (!st.empty()) {
+            Game g = st.pop();
+//            if ((g.n == 4 && g.turn % 2 == 0) || (g.n <= 3 && g.turn % 2 == 1)) {
+//                canIWin = true;
+//            }
+            if((g.n == 4 && g.turn % 2 == 1) || (g.n <= 3 && g.turn % 2 == 0)){
                 return false;
             }
-            if (canWinNim(n - choice, whoseChance)) {
-                return true;
+            for (int ch : choices) {
+                if (g.n - ch > 3) {
+                    st.push(new Game(g.n - ch, g.turn + 1));
+                }
             }
         }
-        return false;
+        return true;
     }
+
 }
