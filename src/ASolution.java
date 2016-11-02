@@ -2,6 +2,53 @@
  * Created by prasanthnair on 8/17/16.
  */
 public abstract class ASolution {
+
+    // BST template
+    public class TreeNode {
+        TreeNode left;
+        TreeNode right;
+        int val;
+
+        TreeNode(int k){
+            val = k;
+        }
+    }
+    public TreeNode root;
+
+    public void insertBST(int k){
+        if(root == null){
+            root = new TreeNode(k);
+            root.val = k;
+            return;
+        }
+        insertBSTHelper(root, k);
+    }
+
+    private void insertBSTHelper(TreeNode node, int k){
+        if (node == null){
+            return;
+        }
+
+        TreeNode left = node.left;
+        TreeNode right = node.right;
+
+        if (k < node.val){
+            if(left != null){
+                insertBSTHelper(left, k);
+            } else {
+                left = new TreeNode(k);
+                node.left = left;
+            }
+        } else if (k > node.val){
+            if(right != null){
+                insertBSTHelper(right, k);
+            } else {
+                right = new TreeNode(k);
+                node.right = right;
+            }
+        }
+    }
+
     /*
     ONE LINE PRINTS
      */

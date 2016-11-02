@@ -28,7 +28,7 @@ public class Sum2 extends ASolution {
     }
 
     public int[] twoSum(int[] nums, int target) {
-        HashMap<Integer, Integer> indexMap = new HashMap<>();
+        HashMap<Integer, Integer> indexMap = new HashMap<Integer, Integer>();
         for (int i = 0; i < nums.length; i++) {
             if(indexMap.containsKey(target - nums[i])){
                 return new int[]{i, indexMap.get(target - nums[i])};

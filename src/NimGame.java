@@ -24,7 +24,7 @@ public class NimGame extends ASolution {
     }
 
     int[] choices = {1, 2, 3};
-    Stack<Game> st = new Stack<>();
+    Stack<Game> st = new Stack<Game>();
 
     class Game {
         int n;
