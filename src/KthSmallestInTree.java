@@ -1,7 +1,9 @@
+
 class KthSmallestInTree extends ASolution{
     @Override
     void runSolution() {
-
+    	populateTree(10);
+    	inOrderTraversal();
     }
 
     private int count = 0;

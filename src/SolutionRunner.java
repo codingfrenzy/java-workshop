@@ -3,7 +3,7 @@
  */
 public class SolutionRunner {
     public static void main(String[] args) {
-        ASolution sol = new NimGame();
+        ASolution sol = new KthSmallestInTree();
         sol.runSolution();
     }
 }
