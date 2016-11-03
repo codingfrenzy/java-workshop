@@ -59,7 +59,9 @@ public abstract class ASolution {
 
     public void inOrderTraversal() {
         inOrderTraversal(root);
+        System.out.println();
     }
+
     public void inOrderTraversal(TreeNode node) {
         if (node == null)
             return ;
